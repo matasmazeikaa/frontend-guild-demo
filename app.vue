@@ -1,5 +1,13 @@
 <template>
-  <div>
-    I'm a cool developer thats gonna show this to the world
-  </div>
+    <ul>
+      <li v-for="post in posts" :key="post.title">
+        <p>{{ post.title }}</p>
+      </li>
+    </ul>
 </template>
+
+<script lang="ts" setup>
+
+const { data: posts } = await useAsyncData('blog', () => queryContent('/blog').find())
+
+</script>
